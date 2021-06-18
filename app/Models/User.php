@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 class User extends Authenticatable implements JWTSubject
 {
-  use HasFactory, Notifiable;
+  use HasFactory, Notifiable, SoftDeletes;
   /**
    * The attributes that are mass assignable.
    *
@@ -21,7 +21,8 @@ class User extends Authenticatable implements JWTSubject
   protected $fillable = [
     'name',
     'email',
-    'password',
+    'role',
+    'password'
   ];
   /**
    * The attributes that should be hidden for arrays.
@@ -53,4 +54,19 @@ class User extends Authenticatable implements JWTSubject
     return [];
   }
 
-}
+  public function vendorItems() {
+        return $this->hasMany(VendorItem::class);
+    }
+
+    public function order() {
+      return $this->hasMany(Order::class);
+    }
+
+    public function restaurants() {
+      return $this->hasMany(Restaurant::class);
+    }
+
+    public function carts() {
+      return $this->hasOne(Cart::class);
+    }
+  }
