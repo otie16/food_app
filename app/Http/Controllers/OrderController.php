@@ -15,7 +15,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json([
+            'data' => 'this is a sample data'
+        ]);
     }
 
     /**
@@ -34,9 +36,14 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $req)
     {
-        //
+        $order = new Order();
+        $order->quantity = $req->quantity;
+        $order->address = $req->address;
+        $order->order_placed = $req->order_placed;
+        $order->save();
+       
     }
 
     /**

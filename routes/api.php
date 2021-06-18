@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\VendorItemController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,7 +18,8 @@ use App\Http\Controllers\AuthController;
 
 Route::group(['middleware' => 'api'], function ($router) {
 
-
+  Route::get('test', 'OrderController@index');
+  
     Route::group(['prefix' => 'auth'], function() {
 
       Route::post('login', 'AuthController@login');
@@ -26,6 +28,15 @@ Route::group(['middleware' => 'api'], function ($router) {
       Route::post('refresh', 'AuthController@refresh');
       Route::get('me', 'AuthController@me');
       Route::get('test', 'AuthController@test');
+
     });
+
+          
+    // Route::group(['prefix' => 'user', 'namespace' => 'User'], function() {
+      
+    //   Route::get('items', 'VendorItemController@index');
+    //   Route::post('items', 'VendorItemController@store');
     
+    // });
+
     });
