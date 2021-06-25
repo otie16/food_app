@@ -19,8 +19,8 @@ class CreateRestaurantsTable extends Migration
             $table->string('restaurant_name');
             $table->string('location');
             $table->string('description');
-            $table->softDeletes();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
