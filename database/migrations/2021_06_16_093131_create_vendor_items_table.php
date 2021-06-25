@@ -16,13 +16,14 @@ class CreateVendorItemsTable extends Migration
         Schema::create('vendor_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('restaurant_id');
+            $table->foreignId('menu_id');
             $table->string('name');
             $table->text('description');
             $table->boolean('available')->default(1);
             // $table->string('image');
             $table->double('price');
             $table->timestamps();
-            $table->softDeletes();
+            // $table->softDeletes();
         });
     }
 

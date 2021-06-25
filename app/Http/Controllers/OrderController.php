@@ -39,9 +39,10 @@ class OrderController extends Controller
     public function store(Request $req)
     {
         $order = new Order();
-        $order->quantity = $req->quantity;
-        $order->address = $req->address;
-        $order->order_placed = $req->order_placed;
+        $order->user_id = $req->user_id;
+        $order->address_id = $req->address_id;
+        $order->status = $req->status;
+        $order->message = $req->message;
         $order->save();
        
     }
